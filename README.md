@@ -1,6 +1,6 @@
 # ghostwr
 
-ChatGPT が楽しかったので OpenAI API に代筆をお願いする記事作成スクリプト。
+ChatGPT が楽しかったので [OpenAI API](https://openai.com/api/) に代筆をお願いする記事作成スクリプト。
 
 記事や書籍の名前を OpenAI の API に渡して「目次」を書いてもらい、さらに目次の各項目について記事を書いてもらう。
 

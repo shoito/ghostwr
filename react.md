@@ -1,3 +1,5 @@
+**※ [OpenAI API](https://openai.com/api/) により機械的に生成した文章です。**
+
 # React.js入門記事
 
 
