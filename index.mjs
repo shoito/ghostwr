@@ -65,7 +65,7 @@ for (const { level, contentTitle } of toc) {
 	const contentRaw = (await openai.createCompletion({
 		prompt: `「${promptKeyword}」${promptSuffix}`,
 		model,
-		max_tokens: size === 'short' ? 1024 : size === 'medium' ? 2048 : 4096,
+		max_tokens: size === 'short' ? 1024 : size === 'medium' ? 2048 : 4000,
 		n: 1,
 		temperature: 0.6,
 	})).data.choices[0].text;

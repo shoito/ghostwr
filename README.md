@@ -35,8 +35,8 @@ node index.mjs 記事:5,000兆円欲しい! short > 5000cho-en-hoshii.md
 ## 代筆サンプル
 md表示崩れのため一部エスケープ処理している
 
-- [書籍:Web標準入門 / web-standard.md](./articles/web-standard.md)
-- [React入門記事 / react.md](./articles/react.md)
-- [PostgreSQL入門記事 / postgresql.md](./articles/postgresql.md)
-- [記事:5,000兆円欲しい! / 5000cho-en-hoshii.md](./articles/5000cho-en-hoshii.md)
-- [心を豊かにするひと工夫 / life-dev.pdf](./slides/life-dev.pdf), [Markdown](./slides/life-dev.md)
+- [書籍:Web標準入門 / web-standard.md](./web-standard.md)
+- [React入門記事 / react.md](./react.md)
+- [PostgreSQL入門記事 / postgresql.md](./postgresql.md)
+- [記事:5,000兆円欲しい! / 5000cho-en-hoshii.md](./5000cho-en-hoshii.md)
+- [心を豊かにするひと工夫 / SpeakerDeck](https://speakerdeck.com/shoito/life-dev), [Markdown](./slides/life-dev.md), [PDF](./slides/life-dev.pdf)
