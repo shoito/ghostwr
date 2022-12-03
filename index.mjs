@@ -10,11 +10,20 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const model = 'text-davinci-003';
-const [title, size] = process.argv.slice(2); // size: short, medium, long
+// size: short, medium, long
+// kind: article, slide
+const [title, size, kind] = process.argv.slice(2);
+
+if (kind === 'slide') {
+	console.log(`---
+marp: true
+headingDivider: 4
+---\n`)
+}
 
 console.log(`# ${title}`);
 const tocRaw = (await openai.createCompletion({
-	prompt: `${title}の目次を書いてください`,
+	prompt: `「${title}」の目次を書いてください`,
 	model,
 	max_tokens: size === 'short' ? 512 : size === 'medium' ? 1024 : 2048,
 	n: 1,
@@ -29,9 +38,10 @@ const toc = tocRaw.split('\n').filter((line) => line !== '').map((line) => {
 	return { level, contentTitle };
 });
 
+const MIN_CONTENT_TITLE_LENGTH = 8;
+const contentTitleList = [];
 let preContentTitle = ''
 let currentLevel = 0;
-const contentTitleList = [];
 for (const { level, contentTitle } of toc) {
 	if (level > currentLevel) {
 		currentLevel = level;
@@ -41,9 +51,19 @@ for (const { level, contentTitle } of toc) {
 		contentTitleList.pop();
 	}
 
+	let promptKeyword = `${contentTitleList.join(' ')} ${contentTitle}`
+	if (level === 0 && contentTitle.length < MIN_CONTENT_TITLE_LENGTH) {
+		promptKeyword = `${title} ${contentTitle}`
+	}
+
+	let promptSuffix = 'の記事を書いてください';
+	if (kind === 'slide') {
+		promptSuffix = 'の解説を箇条書きで要約してください';
+	}
+
 	console.log(`${'#'.repeat(level + 2)} ${contentTitle}`);
 	const contentRaw = (await openai.createCompletion({
-		prompt: `「${contentTitleList.join(' ')} ${contentTitle}」の記事を書いてください`,
+		prompt: `「${promptKeyword}」${promptSuffix}`,
 		model,
 		max_tokens: size === 'short' ? 1024 : size === 'medium' ? 2048 : 4096,
 		n: 1,

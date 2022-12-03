@@ -21,14 +21,22 @@ node index.mjs 記事:5,000兆円欲しい! short > 5000cho-en-hoshii.md
 3. 代筆してもらいたいタイトルと長さ(short, medium, long)を指定して実行する
   ```sh
   npm ci
+  # 記事を作ってみる
   node index.mjs 書籍:Web標準入門 short > web-standard.md
   node index.mjs React.js入門記事 short > react.md
+  node index.mjs PostgreSQL入門記事 short > postgresql.md
   node index.mjs 記事:5,000兆円欲しい! short > 5000cho-en-hoshii.md
+  # スライドを作ってみる
+  node index.mjs 心を豊かにするひと工夫 short slide > life-dev.md
+  npx marp --pdf life-dev.md
   ```
 4. Markdown ファイルが生成されるのをのんびり待つ
 
 ## 代筆サンプル
+md表示崩れのため一部エスケープ処理している
 
-- [書籍:Web標準入門 / web-standard.md](./web-standard.md) (md表示崩れのため一部エスケープ処理している)
-- [React入門記事 / react.md](./react.md)
-- [記事:5,000兆円欲しい! / 5000cho-en-hoshii.md](./5000cho-en-hoshii.md)
+- [書籍:Web標準入門 / web-standard.md](./articles/web-standard.md)
+- [React入門記事 / react.md](./articles/react.md)
+- [PostgreSQL入門記事 / postgresql.md](./articles/postgresql.md)
+- [記事:5,000兆円欲しい! / 5000cho-en-hoshii.md](./articles/5000cho-en-hoshii.md)
+- [心を豊かにするひと工夫 / life-dev.pdf](./slides/life-dev.pdf), [Markdown](./slides/life-dev.md)
